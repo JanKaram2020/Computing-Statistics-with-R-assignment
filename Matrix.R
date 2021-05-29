@@ -1,3 +1,5 @@
+# <<- allows you to assign value in the outer scope
+
 # Inverse matrix and cache it's value in case it's
 # requested again to save time
 # we assume all arguments passed to the function are invertible
@@ -56,3 +58,25 @@ cacheSolve <- function(matrix) {
   matrix$setInvertedMatrix(invertedMatrix)
   return(invertedMatrix)
 }
+
+# speed test function to check if previous functions working
+speedTest <- function(matrix) {
+  temporary = makeCacheMatrix(matrix)
+  
+  # calculates time took for first calculation then prints it
+  startTime = Sys.time()
+  cacheSolve(temporary)
+  duration = Sys.time() - startTime
+  print(duration)
+  
+  # calculates time took to return value form cache then prints it
+  startTime = Sys.time()
+  cacheSolve(temporary)
+  duration = Sys.time() - startTime
+  print(duration)
+}
+
+# random numbers from normal population to check the functions with it
+r = rnorm(1000000)
+testMatrix = matrix(r, nrow = 1000, ncol = 1000)
+speedTest(testMatrix)
