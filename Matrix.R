@@ -35,3 +35,19 @@ makeCacheMatrix <- function(matrix) {
     )
   )
 }
+
+# checks if value exists in cache and return it
+# else compute the value and return it
+cacheSolve <- function(matrix) {
+  #variable to hold InvertedMatrix's value
+  invertedMatrix <- matrix$getInvertedMatrix()
+
+  if (!is.null(invertedMatrix)) {
+    # if invertedMarix not empty return it from cache
+    return(invertedMatrix)
+  }
+  # else compute it and return it
+  invertedMatrix <- solve(matrix$getMatrix())
+  matrix$setInvertedMatrix(invertedMatrix)
+  return(invertedMatrix)
+}
