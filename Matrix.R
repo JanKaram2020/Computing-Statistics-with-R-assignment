@@ -13,18 +13,22 @@ makeCacheMatrix <- function(matrix) {
   setMatrix <- function(newMatrix) {
     matrix <<- newMatrix
   }
+  
   # second method to set InvertedMatrix to the inverted
   setInvertedMatrix <- function(inverse) {
     invertedMatrix <<- inverse
   }
+  
   # third method to get matrix before inversion
   getMatrix <- function() {
     return (matrix)
   }
+  
   # forth method to get matrix after inversion
   getInvertedMatrix <- function() {
     return (invertedMatrix)
   }
+  
   # returns list with the four methods
   return(
     list(
@@ -41,11 +45,12 @@ makeCacheMatrix <- function(matrix) {
 cacheSolve <- function(matrix) {
   #variable to hold InvertedMatrix's value
   invertedMatrix <- matrix$getInvertedMatrix()
-
+  
   if (!is.null(invertedMatrix)) {
     # if invertedMarix not empty return it from cache
     return(invertedMatrix)
   }
+  
   # else compute it and return it
   invertedMatrix <- solve(matrix$getMatrix())
   matrix$setInvertedMatrix(invertedMatrix)
