@@ -25,3 +25,5 @@ relatedAm = lm(am ~ wt , data=mtcars)
 summary(relatedAm) # am is independent on weight (p-value is so big)
 relatedVs = lm(vs ~ wt + cyl + disp , data=mtcars) 
 summary(relatedVs) # vs is independent on weight (p-value is so big)
+
+paste("mpg is dependant","gear , am and vs are independant")
